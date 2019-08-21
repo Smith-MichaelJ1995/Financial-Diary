@@ -5,10 +5,12 @@ export const register = newUser => {
     .post('users/register', {
       first_name: newUser.first_name,
       last_name: newUser.last_name,
+      username: newUser.username,
       email: newUser.email,
       password: newUser.password
     })
     .then(response => {
+      console.log(response);
       console.log('Registered')
     })
 }

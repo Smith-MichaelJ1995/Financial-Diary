@@ -10,15 +10,17 @@ users.use(cors())
 process.env.SECRET_KEY = 'secret'
 
 users.post('/register', (req, res) => {
+
   const today = new Date()
   const userData = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     username: req.body.username,
     password: req.body.password,
+    created: today,
     email: req.body.email,
-    created: today
   }
+
 
   User.findOne({
     where: {

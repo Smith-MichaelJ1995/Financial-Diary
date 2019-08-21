@@ -7,8 +7,9 @@ class Register extends Component {
     this.state = {
       first_name: '',
       last_name: '',
-      email: '',
+      username: '',
       password: '',
+      email: '',
       errors: {}
     }
 
@@ -25,9 +26,11 @@ class Register extends Component {
     const newUser = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-      email: this.state.email,
-      password: this.state.password
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email
     }
+
 
     register(newUser).then(res => {
       this.props.history.push(`/login`)
@@ -63,24 +66,38 @@ class Register extends Component {
                   onChange={this.onChange}
                 />
               </div>
+              
               <div className="form-group">
-                <label htmlFor="email">Email address</label>
+                <label htmlFor="name">Username</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="username"
+                  placeholder="Enter your username name"
+                  value={this.state.username}
+                  onChange={this.onChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="name">Email</label>
                 <input
                   type="email"
                   className="form-control"
                   name="email"
-                  placeholder="Enter email"
+                  placeholder="Enter your username name"
                   value={this.state.email}
                   onChange={this.onChange}
                 />
               </div>
+
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="email">Password</label>
                 <input
                   type="password"
                   className="form-control"
                   name="password"
-                  placeholder="Password"
+                  placeholder="Enter password"
                   value={this.state.password}
                   onChange={this.onChange}
                 />
