@@ -24,11 +24,12 @@ users.post('/register', (req, res) => {
 
   User.findOne({
     where: {
-      username: req.body.username
+      [User.or]: [{ username: req.body.username}, {email: req.body.email}]
     }
   })
     //TODO bcrypt
     .then(user => {
+      console.log('user = ', user);
       if (!user) {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
           userData.password = hash

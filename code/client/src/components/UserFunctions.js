@@ -10,8 +10,12 @@ export const register = newUser => {
       password: newUser.password
     })
     .then(response => {
-      console.log(response);
-      console.log('Registered')
+      if(response.error) {
+        console.log(response.error);
+      } else {
+        console.log('Registered')
+      }
+      // console.log(response);
     })
 }
 
